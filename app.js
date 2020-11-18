@@ -38,7 +38,7 @@ app.get("/", function(req, res) {
      */
 
     function listMajors(auth) {
-        const sheets = google.sheet({version: "v4", auth});
+        const sheets = google.sheets({version: "v4", auth});
         sheets.spreadsheets.values.get({
             spreadsheetId: "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms",
             range: "Class Data!A2:E",
