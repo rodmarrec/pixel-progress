@@ -1,0 +1,27 @@
+{
+  "name": "pixel-progress",
+  "version": "1.0.0",
+  "description": "a web page to track your daily progress with pixels, inspired by the Github contribution graph. originally by Anne-Laure Le Cunff",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodmarrec/pixel-progress.git"
+  },
+  "author": "Rodrigo Marron romarron01@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rodmarrec/pixel-progress/issues"
+  },
+  "homepage": "https://github.com/rodmarrec/pixel-progress#readme",
+  "dependencies": {
+    "-": "0.0.1",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "googleapis": "^65.0.0",
+    "request": "^2.88.2",
+    "save": "^2.4.0"
+  }
+}
