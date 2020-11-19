@@ -47,15 +47,15 @@ app.get("/", function(req, res) {
         sheets.spreadsheets.values.batchGet({
             spreadsheetId: "12EAr1BB8-DVW8W-lDKrFOgtqgzX_U5WKQ8VxeqfW_i0",
             ranges: ["A2:A10", "B2:B10", "C2:C10", "D2:D10"],
-        }, (err, res) => {
+        }, (err, response) => {
             if(err) 
                 return console.log("The API returned an error:", + err);
 
             //this creates four variables to store our data and then puts them in a data array which will make manipulating them easier
-            const date = res.data.valueRanges[0].values;
-            const topic = res.data.valueRanges[1].values;
-            const time = res.data.valueRanges[2].values;
-            const level = res.data.valueRanges[3].values;
+            const date = response.data.valueRanges[0].values;
+            const topic = response.data.valueRanges[1].values;
+            const time = response.data.valueRanges[2].values;
+            const level = response.data.valueRanges[3].values;
             const data = [date, topic, time, level];
             
             if(data.length) {
@@ -63,7 +63,8 @@ app.get("/", function(req, res) {
 
                 // print columns A to C, which correspond to indices 0 to 2
                 data.map((row) => {
-                    console.log(`${row[0]}, ${row[1]}, ${row[2]}`);
+                    // console.log(`${row[0]}, ${row[1]}, ${row[2]}`);
+                    res.render("home", {data: data});
                 });
 
             } else {
@@ -71,26 +72,6 @@ app.get("/", function(req, res) {
             }
         });
     }
-
-    // function listMajors(auth) {
-    //     const sheets = google.sheets({version: 'v4', auth});
-    //     sheets.spreadsheets.values.batchGet({
-    //     spreadsheetId: '12EAr1BB8-DVW8W-lDKrFOgtqgzX_U5WKQ8VxeqfW_i0',
-    //     ranges: ["A2:A10", "B2:B10", "C2:C10", "D2:D10"],
-    //     }, (err, res) => {
-    //     if (err) return console.log('The API returned an error: ' + err);
-    //     const rows = res.data.values;
-    //     if (rows.length) {
-    //     console.log('Date, Topic, Time');
-    //     // Print columns A and E, which correspond to indices 0 and 4.
-    //     rows.map((row) => {
-    //     console.log(`${row[0]}, ${row[4]}`);
-    //     });
-    //     } else {
-    //     console.log('No data found.');
-    //     }
-    //     });
-    //     }
 });
 
 
