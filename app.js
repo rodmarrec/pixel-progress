@@ -1,7 +1,7 @@
 // STUB External modules
 // tell our app to require the modules we've installed
 const express = require("express");
-const request = require("express");
+const request = require("request");
 const fs = require("fs");
 const readline = require("readline");
 const {google} = require("googleapis");
@@ -28,38 +28,70 @@ app.get("/", function(req, res) {
             return console.log("Error loading client secret file:", + err);
 
     // authorize a client with credentials, then call the Google Sheets API
-    authorize(JSON.parse(content), listMajors);
+    authorize(JSON.parse(content), pullData);
     });
 
     /** ANCHOR creates OAuth2 param
-     * Prints the names and majors of students in a sample spreadsheet
-     * @see https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+     * Prints the data from pixel progress sample g-sheet
+     * @see https://docs.google.com/spreadsheets/d/12EAr1BB8-DVW8W-lDKrFOgtqgzX_U5WKQ8VxeqfW_i0/edit#gid=0
      * @param {google.auth.OAuth2} auth The authenticated Google OAuth client
      */
 
-    function listMajors(auth) {
+    function pullData(auth) {
         const sheets = google.sheets({version: "v4", auth});
-        sheets.spreadsheets.values.get({
-            spreadsheetId: "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms",
-            range: "Class Data!A2:E",
+        /** ANCHOR batchGet
+         * Google Sheets API method called batchGet "allows us to return one or more ranges of values from a spreadsheet"
+         * '2019' refers to the sheet tab name in the file
+         */
+
+        sheets.spreadsheets.values.batchGet({
+            spreadsheetId: "12EAr1BB8-DVW8W-lDKrFOgtqgzX_U5WKQ8VxeqfW_i0",
+            ranges: ["A2:A10", "B2:B10", "C2:C10", "D2:D10"],
         }, (err, res) => {
             if(err) 
                 return console.log("The API returned an error:", + err);
 
-            const rows = res.data.values;
-            if (rows.length) {
-                console.log("Name, Major:");
+            //this creates four variables to store our data and then puts them in a data array which will make manipulating them easier
+            const date = res.data.valueRanges[0].values;
+            const topic = res.data.valueRanges[1].values;
+            const time = res.data.valueRanges[2].values;
+            const level = res.data.valueRanges[3].values;
+            const data = [date, topic, time, level];
+            
+            if(data.length) {
+                console.log("Data:");
 
-            // print columns A and E, which correspond to indices 0 and 4
-            rows.map((row) => {
-                console.log(`${row[0]}, ${row[4]}`);
-            });
+                // print columns A to C, which correspond to indices 0 to 2
+                data.map((row) => {
+                    console.log(`${row[0]}, ${row[1]}, ${row[2]}`);
+                });
+
             } else {
-                console.log("No data found");
+                console.log("No data found.");
             }
         });
     }
-})
+
+    // function listMajors(auth) {
+    //     const sheets = google.sheets({version: 'v4', auth});
+    //     sheets.spreadsheets.values.batchGet({
+    //     spreadsheetId: '12EAr1BB8-DVW8W-lDKrFOgtqgzX_U5WKQ8VxeqfW_i0',
+    //     ranges: ["A2:A10", "B2:B10", "C2:C10", "D2:D10"],
+    //     }, (err, res) => {
+    //     if (err) return console.log('The API returned an error: ' + err);
+    //     const rows = res.data.values;
+    //     if (rows.length) {
+    //     console.log('Date, Topic, Time');
+    //     // Print columns A and E, which correspond to indices 0 and 4.
+    //     rows.map((row) => {
+    //     console.log(`${row[0]}, ${row[4]}`);
+    //     });
+    //     } else {
+    //     console.log('No data found.');
+    //     }
+    //     });
+    //     }
+});
 
 
 // STUB Scopes
@@ -132,6 +164,9 @@ function getNewToken(oAuth2Client, callback) {
         });
     });
 }
+
+
+
 
 // Server Listener
 // process.env.PORT will let our environment (ex: Heroku) set the variable for us later
