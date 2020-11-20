@@ -46,7 +46,7 @@ app.get("/", function(req, res) {
 
         sheets.spreadsheets.values.batchGet({
             spreadsheetId: "12EAr1BB8-DVW8W-lDKrFOgtqgzX_U5WKQ8VxeqfW_i0",
-            ranges: ["A2:A10", "B2:B10", "C2:C10", "D2:D10"],
+            ranges: ["A2:A373", "B2:B373", "C2:C373", "D2:D373"],
         }, (err, response) => {
             if(err) 
                 return console.log("The API returned an error:", + err);
@@ -144,15 +144,6 @@ function getNewToken(oAuth2Client, callback) {
             callback(oAuth2Client);
         });
     });
-}
-
-/**
- * STUB add squares
- */
-const squares = document.querySelector(".sqaures");
-for (let i = 0; i < 365; i++ ) {
-    const level = Math.floor(Math.random() * 3);
-    squares.insertAdjacentHTML("beforeend", `<li data-level="${level}"></li>`)
 }
 
 

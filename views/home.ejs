@@ -15,22 +15,23 @@
     </div>
 
     <!-- STUB overall grid -->
-    <div class="grid">
+    <div class="graph">
 
         <!-- STUB months -->
         <ul class="months">
-            <li>Jan</li>
-            <li>Feb</li>
-            <li>Mar</li>
-            <li>Apr</li>
-            <li>May</li>
-            <li>Jun</li>
-            <li>Jul</li>
-            <li>Aug</li>
-            <li>Sep</li>
-            <li>Oct</li>
-            <li>Nov</li>
-            <li>Dec</li>
+            <li>Nov-'20</li>
+            <li>Dec-'20</li>
+            <li>Jan-'21</li>
+            <li>Feb-'21</li>
+            <li>Mar-'21</li>
+            <li>Apr-'21</li>
+            <li>May-'21</li>
+            <li>Jun-'21</li>
+            <li>Jul-'21</li>
+            <li>Aug-'21</li>
+            <li>Sep-'21</li>
+            <li>Oct-'21</li>
+            <li>Nov-'21</li>
         </ul>
 
         <!-- STUB days -->
@@ -46,7 +47,10 @@
 
         <!-- STUB squares -->
         <ul class="squares">
-            <!-- added via javascript -->
+            <% for (let i = 0; i < 364; i++) { %>
+                <li data-level="<%= data[3][i] %>">
+                </li>
+            <% } %>
         </ul>
     </div>
 

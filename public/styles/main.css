@@ -22,18 +22,19 @@
 .months {
     display: grid;
     grid-template-columns: 
-        calc(var(--week-width) * 4) /* Jan */
-        calc(var(--week-width) * 4) /* Feb */
-        calc(var(--week-width) * 4) /* Mar */
-        calc(var(--week-width) * 5) /* Apr */
-        calc(var(--week-width) * 4) /* May */
-        calc(var(--week-width) * 4) /* Jun */
-        calc(var(--week-width) * 5) /* Jul */
-        calc(var(--week-width) * 4) /* Aug */
-        calc(var(--week-width) * 4) /* Sep */
-        calc(var(--week-width) * 5) /* Oct */
-        calc(var(--week-width) * 4) /* Nov */
-        calc(var(--week-width) * 5) /* Dec */   
+        calc(var(--week-width) * 4) /* Nov-'20 */
+        calc(var(--week-width) * 5) /* Dec-'20 */
+        calc(var(--week-width) * 4) /* Jan-'21 */
+        calc(var(--week-width) * 4) /* Feb-'21 */
+        calc(var(--week-width) * 4) /* Mar-'21 */
+        calc(var(--week-width) * 5) /* Apr-'21 */
+        calc(var(--week-width) * 4) /* May-'21 */
+        calc(var(--week-width) * 4) /* Jun-'21 */
+        calc(var(--week-width) * 5) /* Jul-'21 */
+        calc(var(--week-width) * 5) /* Aug-'21 */
+        calc(var(--week-width) * 4) /* Sep-'21 */
+        calc(var(--week-width) * 5) /* Oct-'21 */
+        calc(var(--week-width) * 4) /* Nov-'21 */   
 }
 
 .days, 
@@ -72,15 +73,19 @@ body {
 }
 
 .squares li[data-level="1"] {
-    background-color:  #c6e48b;
+    background-color:  #fdc8dd;
 }
 
 .squares li[data-level="2"] {
-    background-color: #7bc96f;
+    background-color: #dd83a5;
 }
 
 .squares li[data-level="3"] {
-    background-color: #196127;
+    background-color: #dd427e;
+}
+
+.squares li[data-level="4"] {
+    background-color: #8b0035;
 }
 
 
