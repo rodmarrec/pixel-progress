@@ -146,7 +146,14 @@ function getNewToken(oAuth2Client, callback) {
     });
 }
 
-
+/**
+ * STUB add squares
+ */
+const squares = document.querySelector(".sqaures");
+for (let i = 0; i < 365; i++ ) {
+    const level = Math.floor(Math.random() * 3);
+    squares.insertAdjacentHTML("beforeend", `<li data-level="${level}"></li>`)
+}
 
 
 // Server Listener
