@@ -42,7 +42,12 @@
         <!-- STUB squares -->
         <ul class="squares">
             <% for (let i = 0; i < 364; i++) { %>
-                <li data-level="<%= data[3][i] %>">
+                <li data-toggle="tooltip" 
+                    data-placement="bottom" 
+                    data-animation="false" 
+                    delay="0" 
+                    title="<%= data[1][i] %>" 
+                    data-level="<%= data[3][i] %>">
                 </li>
             <% } %>
         </ul>
