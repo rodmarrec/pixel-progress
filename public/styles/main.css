@@ -4,7 +4,7 @@
 
 :root {
     --square-size: 15px;
-    --square-gap: 5px;
+    --square-gap: 8px;
     --week-width: calc(var(--square-size) + var(--square-gap));
 }
 
@@ -58,7 +58,7 @@ body {
 
 .graph {
     padding: 20px;
-    border: 1px #e1e4e8 solid;
+    border: 1px #e0e0e0 solid;
     margin: 20px;
 }
 
