@@ -1,57 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- STUB head -->
+    <!-- STUB head-links -->
     <%- include ("./0-partials/head-links.ejs") -%>
 
-    <title>RM_Post GA</title>
+    <!-- STUB bootstrap tooltips -->
+    <%- include ("./0-partials/bs-tooltips.ejs") -%>
+
+    <title>Code Tracker</title>\
+
 </head>
 
 <body>
-    <!-- STUB overall grid -->
-    <div class="graph">
+    
+    <!-- STUB navbar -->
+    <%- include ("./0-partials/navbar.ejs") -%>
 
-        <!-- STUB months -->
-        <ul class="months">
-            <li>Nov-'20</li>
-            <li>Dec-'20</li>
-            <li>Jan-'21</li>
-            <li>Feb-'21</li>
-            <li>Mar-'21</li>
-            <li>Apr-'21</li>
-            <li>May-'21</li>
-            <li>Jun-'21</li>
-            <li>Jul-'21</li>
-            <li>Aug-'21</li>
-            <li>Sep-'21</li>
-            <li>Oct-'21</li>
-            <li>Nov-'21</li>
-        </ul>
+    <!-- STUB main -->
+    <main class="main">
 
-        <!-- STUB days -->
-        <ul class="days">
-            <li>Sun</li>
-            <li>Mon</li>
-            <li>Tue</li>
-            <li>Wed</li>
-            <li>Thu</li>
-            <li>Fri</li>
-            <li>Sat</li>
-        </ul>
+        <!-- STUB graph -->
+        <%- include ("./0-partials/graph.ejs") -%>
 
-        <!-- STUB squares -->
-        <ul class="squares">
-            <% for (let i = 0; i < 364; i++) { %>
-                <li data-toggle="tooltip" 
-                    data-placement="bottom" 
-                    data-animation="false" 
-                    delay="0" 
-                    title="<%= data[1][i] %>" 
-                    data-level="<%= data[3][i] %>">
-                </li>
-            <% } %>
-        </ul>
-    </div>
+    </main>
+
 
 
 </body>
